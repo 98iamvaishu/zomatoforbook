@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class = "container">
+	<div class = "row">
+{%for b in books%}
+	
+	<div   class = "col-md-4">
+		<a class = "cardhover" href = "{% url 'book' book_name=b.Book_Name%}" style = "text-decoration:none;">
+			<div  class = "card mb-3">
+	  			<img  style = " height :450px;"class="card-img-top"  src="/{{b.image}}" alt="Card image cap">
+	  		<div class="card-title" style = "color:black; text-allign:center"><h3>{{b.Book_Name}}</h3>
+	  		</div>
+			</div>
+		</a>
+	</div>
+
+	
+{%endfor%}
+</div>
+</div>
+
+{% endblock %}

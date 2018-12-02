@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class = "container">
+
+<div class = 'row'>
+	<div class = 'col-md-3'>
+		<img class="card-img-top"  src="/{{book.image}}" alt="Card image cap">
+	</div>
+	<div class = 'col-md-9'>
+		<div class = "container">
+		<h2>{{book.Book_Name}}</h2>
+		<h7><i>By {{book.Book_Author}}</i></h7>
+		<br>
+		<br>
+		<br>
+		<p>{{book.Summary}}</p>
+		<a href="{{book.link}}" target="_blank">Here is the link to buy the Book</a>
+	</div>
+</div>
+
+<br>
+<br>
+<br>
+<div class = "container">
+	<br>
+<h3>Comments</h3>
+<hr>
+	<form action = "" method = POST>
+		{%csrf_token%}
+			<div class="form-group">
+                        <textarea class="form-control " rows = '3'   name="comment" placeholder="Leave a comment to help others know about this book"></textarea>
+            </div>
+   
+            <div class = "row">
+				<div class="col align-self-end">
+					<button type = "submit" class = "btn btn-primary" value = "add"> Post a Comment</button>
+	      
+	    		</div>
+	   		</div>
+	</form>
+	    <br>
+	    <br>
+
+    
+
+</div>
+{%for c in comment%}
+<div class = "container">
+	<div class = "card">
+		<div class = "container">
+		<h5><b>{{c.user.username}}</b></h5>
+		
+		<p>{{c.comment}}</p>
+	</div>
+	</div>
+	<br>
+</div>
+<hr>
+<br>
+
+<br>
+{%endfor%}
+{%endblock%}
